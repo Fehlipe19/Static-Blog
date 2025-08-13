@@ -1,0 +1,8 @@
+<main>
+  <h1>Edit Post</h1>
+  <form action="/submit" method="POST">
+    <input type="text" name="title" placeholder="<%=post.title%>" value="<%=post.title%>" required />
+    <textarea name="content" placeholder="<%=post.content%>" required><%=post.content%></textarea>
+    <button type="submit">Edit Post</button>
+  </form>
+</main>

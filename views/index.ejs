@@ -1,12 +1,27 @@
 <%- include ("partials/header.ejs") %>
 <main>
   <h1>Blog Heading</h1>
+  <form action="/submit" method="POST">
+    <input type="text" name="title" placeholder="Post Title" required />
+    <textarea name="content" placeholder="Post Content" required></textarea>
+    <button type="submit">Submit Post</button>
+  </form>
+
   <div class="posts-container">
     <% posts.forEach(post => { %>
     <div class="post">
       <h2><%= post.title %></h2>
+      <!--MAybe add a post image-->
       <p><%= post.content.substring(0, 100) %>...</p>
       <a href="/posts/<%= post._id %>">Read More</a>
+      <form action="/edit" method="GET">
+        <input type="hidden" name="postId" value="<%= post.id %>" />
+        <button type="submit">Edit Post</button>
+      </form>
+      <form action="/delete" method="POST">
+        <input type="hidden" name="postId" value="<%= post.id %>" />
+        <button type="submit">Delete Post</button>
+      </form>
     </div>
     <% }) %>
   </div>
