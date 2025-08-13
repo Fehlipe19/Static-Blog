@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("index.ejs", { posts: posts });
+  res.render("index.ejs", { posts: posts, year: year });
 });
 
 app.get("/edit", (req, res) => {
@@ -20,7 +20,7 @@ app.get("/edit", (req, res) => {
   const post = posts.find((p) => p.id === postId);
   console.log(typeof postId);
   if (post) {
-    res.render("edit.ejs", { post: post, posts: posts });
+    res.render("edit.ejs", { post: post, posts: posts, year: year });
   } else {
     res.status(404).send("Post not found");
   }

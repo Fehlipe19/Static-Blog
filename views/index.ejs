@@ -1,12 +1,15 @@
 <%- include ("partials/header.ejs") %>
 <main>
-  <h1>Blog Heading</h1>
-  <form action="/submit" method="POST">
+  <h1>Simple Static Blog</h1>
+  <form class="form-container" action="/submit" method="POST">
+    <label for="title"> Title: </label>
     <input type="text" name="title" placeholder="Post Title" required />
+    <label for="content"> Content: </label>
     <textarea name="content" placeholder="Post Content" required></textarea>
     <button type="submit">Submit Post</button>
   </form>
 
+  <h2>Posts</h2>
   <div class="posts-container">
     <% posts.forEach(post => { %>
     <div class="post">
@@ -14,14 +17,16 @@
       <!--MAybe add a post image-->
       <p><%= post.content.substring(0, 100) %>...</p>
       <a href="/posts/<%= post._id %>">Read More</a>
-      <form action="/edit" method="GET">
-        <input type="hidden" name="postId" value="<%= post.id %>" />
-        <button type="submit">Edit Post</button>
-      </form>
-      <form action="/delete" method="POST">
-        <input type="hidden" name="postId" value="<%= post.id %>" />
-        <button type="submit">Delete Post</button>
-      </form>
+      <div class="button-container">
+        <form action="/edit" method="GET">
+          <input type="hidden" name="postId" value="<%= post.id %>" />
+          <button type="submit">Edit Post</button>
+        </form>
+        <form action="/delete" method="POST">
+          <input type="hidden" name="postId" value="<%= post.id %>" />
+          <button type="submit">Delete Post</button>
+        </form>
+      </div>
     </div>
     <% }) %>
   </div>

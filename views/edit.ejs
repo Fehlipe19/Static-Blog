@@ -1,9 +1,12 @@
 <%- include ("partials/header.ejs") %>
 <main>
   <h1>Edit Post</h1>
-  <form action="/submit" method="POST">
+  <form class="form-container" action="/submit" method="POST">
+    <label for="title"> Title: </label>
     <input type="text" name="title" placeholder="<%=post.title%>" value="<%=post.title%>" required />
-    <textarea name="content" placeholder="<%=post.content%>" required><%=post.content%></textarea>
+    <label for="content"> Content: </label>
+    <textarea class="edit-post" name="content" placeholder="<%=post.content%>" required><%=post.content%></textarea>
     <button type="submit">Edit Post</button>
   </form>
 </main>
+<%- include ("partials/footer.ejs") %>
